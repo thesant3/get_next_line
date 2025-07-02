@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 05:44:08 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/06/25 06:33:32 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/03 01:03:05 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,8 @@ char	*ft_strchr(char *str, int c)
 	return (NULL);
 }
   
-
 /*
-*function thats returns a duplicate string using malloc
+*ft_strdup returns a duplicate string using malloc
 *recive as parameter an array of char
 *returns Null is fails allocates memory
 */
@@ -71,20 +70,33 @@ char	*ft_strdup(const char *s)
 	return (new_string);
 }
 
+/**ft_gn_strjoin() combine two strings in new one
+ **
+ **
+ **
+ */
 char	*ft_gn_strjoin(char *s1, char *s2)
-{	
+{
 	int	len1;
 	int	len2;
+	int	i;
 	char	*ptr;
 
 	if (!s1)
-		len = 0;
+		len1 = 0;
 	else
-		len1 = strlen(s1); 
-	len2 = strlen(s2);
-	*ptr = malloc((len1 + len2 + 1);
+		len1 = ft_ strlen(s1);
+	len2 = ft_strlen(s2);
+	ptr = malloc(len1 + len2 + 1);
 	if (!ptr)
 		return (NULL);
-	*ptr[0] = '\0';
-	
+	i = -1;
+	while (++i < len1)
+		ptr[i] = s1[i];
+	i = -1;
+	while (++i < len2)
+		ptr[len1 + i] = s2[i];
+	ptr[len1 + len2] = '\0';
+	free(s1);
+	return (ptr);
 }
