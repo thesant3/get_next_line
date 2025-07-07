@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 05:44:08 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/03 01:03:05 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/07 21:45:55 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 */
 size_t	ft_strlen(const char *s)
 {
-	size_t  i;
+	size_t	i;
+
 	i = 0;
 	while (s[i])
 		i++;
@@ -33,7 +34,7 @@ size_t	ft_strlen(const char *s)
  */
 char	*ft_strchr(char *str, int c)
 {
-	while(*str)
+	while (*str)
 	{
 		if (*str == (char)c)
 			return (str);
@@ -43,7 +44,7 @@ char	*ft_strchr(char *str, int c)
 		return (str);
 	return (NULL);
 }
-  
+
 /*
 *ft_strdup returns a duplicate string using malloc
 *recive as parameter an array of char
@@ -51,9 +52,10 @@ char	*ft_strchr(char *str, int c)
 */
 char	*ft_strdup(const char *s)
 {
-	char    *new_string;
-	size_t  len;
-	size_t  i;
+	char	*new_string;
+	size_t	len;
+	size_t	i;
+
 	if (!s)
 		return (NULL);
 	len = ft_strlen(s);
@@ -77,10 +79,10 @@ char	*ft_strdup(const char *s)
  */
 char	*ft_gn_strjoin(char *s1, char *s2)
 {
-	int	len1;
-	int	len2;
-	int	i;
 	char	*ptr;
+	int		len1;
+	int		len2;
+	int		i;
 
 	if (!s1)
 		len1 = 0;
