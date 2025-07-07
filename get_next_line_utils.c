@@ -85,7 +85,7 @@ char	*ft_gn_strjoin(char *s1, char *s2)
 	if (!s1)
 		len1 = 0;
 	else
-		len1 = ft_ strlen(s1);
+		len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	ptr = malloc(len1 + len2 + 1);
 	if (!ptr)
