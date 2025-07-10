@@ -34,9 +34,11 @@ size_t	ft_strlen(const char *s)
  */
 char	*ft_strchr(char *str, int c)
 {
-	while (*str)
+	if (!str)
+		return (NULL);
+	while (str)//while (*str)
 	{
-		if (*str == (char)c)
+		if (*str == (char)c)//if (*str == (char)c)
 			return (str);
 		str++;
 	}

@@ -36,9 +36,15 @@ char	*ft_gn_extract_line(char **s)
 	if (!line)
 		return (NULL);
 	line[len] = '\0';
+	if (!(*s)[len])//
+	{
+		free(*s);//
+		*s = NULL;//
+		//return (line);
+	}
+	remainder = ft_strdup(*s + len);
 	while (len--)
 		line[len] = (*s)[len];
-	remainder = ft_strdup(*s + len);
 	free(*s);
 	*s = remainder;
 	return (line);
@@ -47,7 +53,6 @@ char	*ft_gn_extract_line(char **s)
 char	*get_next_line(int fd)
 {
 	static char	*stash;
-	//char buffer[BUFFER_SIZE + 1];
 	char	*buffer;
 	//char	*line;
 	int		bytes_read;
@@ -58,7 +63,8 @@ char	*get_next_line(int fd)
 	//buffer[BUFFER_SIZE + 1] = '\0';
 	if (!buffer)
 		return (NULL);
-	stash = NULL;
+	//if (!stash)
+	stash = ft_strdup("");
 	bytes_read = 1;
 	while (!ft_strchr(stash, '\n') && bytes_read > 0)
 	{
@@ -73,5 +79,4 @@ char	*get_next_line(int fd)
 	}
 	free(buffer);
 	return(ft_gn_extract_line(&stash));
-
 }
