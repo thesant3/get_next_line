@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 21:49:34 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/08 01:01:46 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/14 01:02:55 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_gn_extract_line(char **s)
 {
 	char	*remainder;
 	char	*line;
+	//char	*line2;
 	int		len;
 
 	if (!s || !*s)
@@ -36,17 +37,13 @@ char	*ft_gn_extract_line(char **s)
 	if (!line)
 		return (NULL);
 	line[len] = '\0';
-	if (!(*s)[len])//
-	{
-		free(*s);//
-		*s = NULL;//
-		//return (line);
-	}
 	remainder = ft_strdup(*s + len);
 	while (len--)
 		line[len] = (*s)[len];
 	free(*s);
 	*s = remainder;
+	//line2 = ft_strdup(line);
+	//free(line);
 	return (line);
 }
 
@@ -54,22 +51,18 @@ char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char	*buffer;
-	//char	*line;
 	int		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
 	buffer = malloc(BUFFER_SIZE + 1);
-	//buffer[BUFFER_SIZE + 1] = '\0';
 	if (!buffer)
 		return (NULL);
-	//if (!stash)
-	stash = ft_strdup("");
 	bytes_read = 1;
-	while (!ft_strchr(stash, '\n') && bytes_read > 0)
+	while (!ft_strchr(stash, '\n') && bytes_read >= 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
+		if (bytes_read < 0 || (bytes_read == 0 && !stash))
 		{
 			free(buffer);
 			return (NULL);
@@ -78,5 +71,7 @@ char	*get_next_line(int fd)
 		stash = ft_gn_strjoin(stash, buffer);
 	}
 	free(buffer);
+	if (bytes_read == 0)
+		return (ft_gn_strjoin(stash,""));
 	return(ft_gn_extract_line(&stash));
 }
