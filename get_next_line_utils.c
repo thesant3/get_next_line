@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 05:44:08 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/14 00:32:18 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/15 01:16:28 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ char	*ft_strchr(char *str, int c)
 {
 	if (!str)
 		return (NULL);
-	while (*str)//while (*str)
+	while (*str)
 	{
-		if (*str == (char)c)//if (*str == (char)c)
+		if (*str == (char)c)
 			return ((char *)str);
 		str++;
 	}
@@ -92,9 +92,9 @@ char	*ft_gn_strjoin(char *s1, char *s2)
 		len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	ptr = malloc(len1 + len2 + 1);
-	ptr[len1 + len2] = '\0';
-	if (!ptr || (len1 == 0 && len2 == 0))
+	if (!ptr)
 		return (NULL);
+	ptr[len1 + len2] = '\0';
 	i = -1;
 	while (++i < len1)
 		ptr[i] = s1[i];

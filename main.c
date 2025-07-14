@@ -14,11 +14,9 @@ int	main(void)
 		return (1);
 	}
 
-	int a = 0;
 	while ((line = get_next_line(fd)) != NULL)
-	//while (1)
 	{
-		printf("%d<<%s\n",a, line);
+		printf("<<%s",line);
 		free(line);
 		
 	}

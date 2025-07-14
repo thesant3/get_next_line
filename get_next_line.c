@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 21:49:34 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/14 01:02:55 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/15 01:17:54 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*ft_gn_extract_line(char **s)
 {
 	char	*remainder;
 	char	*line;
-	//char	*line2;
 	int		len;
 
 	if (!s || !*s)
@@ -42,8 +41,6 @@ char	*ft_gn_extract_line(char **s)
 		line[len] = (*s)[len];
 	free(*s);
 	*s = remainder;
-	//line2 = ft_strdup(line);
-	//free(line);
 	return (line);
 }
 
@@ -62,16 +59,21 @@ char	*get_next_line(int fd)
 	while (!ft_strchr(stash, '\n') && bytes_read >= 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0 || (bytes_read == 0 && !stash))
+		if (bytes_read < 0 || (bytes_read == 0 && stash))
 		{
 			free(buffer);
+			free(stash);
+			//printf("termina el programa");
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
 		stash = ft_gn_strjoin(stash, buffer);
 	}
 	free(buffer);
-	if (bytes_read == 0)
+	/*if (bytes_read == 0)
+	{
+		printf("último paso anter de terminar");
 		return (ft_gn_strjoin(stash,""));
+	}*/
 	return(ft_gn_extract_line(&stash));
 }
