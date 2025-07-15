@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 05:44:08 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/15 01:16:28 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/16 00:12:29 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*ft_gn_strjoin(char *s1, char *s2)
 	int		len1;
 	int		len2;
 	int		i;
-	
+
 	if (!s1)
 		len1 = 0;
 	else

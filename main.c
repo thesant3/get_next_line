@@ -6,6 +6,7 @@ int	main(void)
 {
 	int fd;
 	char *line;
+	int i = 0;
 
 	fd = open("test", O_RDONLY);
 	if(fd < 0)
@@ -16,9 +17,10 @@ int	main(void)
 
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("<<%s",line);
-		free(line);
 		
+		printf("%d<<%s",i,line);
+		free(line);
+		i++;
 	}
         free(line);
 	

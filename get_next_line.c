@@ -6,7 +6,7 @@
 /*   By: sgomez-m <sgomez-m@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 21:49:34 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/15 01:17:54 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/16 00:16:00 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ char	*ft_gn_extract_line(char **s)
 char	*get_next_line(int fd)
 {
 	static char	*stash;
-	char	*buffer;
-	int		bytes_read;
+	char		*buffer;
+	int			bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
 		return (NULL);
@@ -63,17 +63,11 @@ char	*get_next_line(int fd)
 		{
 			free(buffer);
 			free(stash);
-			//printf("termina el programa");
 			return (NULL);
 		}
 		buffer[bytes_read] = '\0';
 		stash = ft_gn_strjoin(stash, buffer);
 	}
 	free(buffer);
-	/*if (bytes_read == 0)
-	{
-		printf("último paso anter de terminar");
-		return (ft_gn_strjoin(stash,""));
-	}*/
-	return(ft_gn_extract_line(&stash));
+	return (ft_gn_extract_line(&stash));
 }
