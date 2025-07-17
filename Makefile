@@ -21,7 +21,11 @@ RM = rm -rf
 
 SRC = $(wildcard $(SRC_DIR)/*.c)
 
+SRC_BONUS =$(wildcard $(SRC_DR)/*.c)
+
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+OBJ_BONUS = $(SRC_BONUS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 #rule to compile everything
 all : $(NAME)
@@ -31,6 +35,10 @@ $(NAME) : $(OBJ)
 	mkdir -p $(BIN_DIR)
 	$(AR) $(NAME) $(OBJ)
 
+#rule to make the library and bonus
+bonus: $(OBJ) $(OBJ_BONUS)
+	$(AR) $(NAME) $(OBJ) $(OBJ_BONUS)
+	
 #%.c to %.o
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)

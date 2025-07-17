@@ -6,7 +6,7 @@
 /*   By: sgomez-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 01:22:24 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/16 01:37:50 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/17 02:56:18 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
