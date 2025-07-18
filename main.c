@@ -72,16 +72,16 @@ int     main(void)
 
 
        	char *line1 = NULL;
-    char *line2 = NULL;
-    char *line3 = NULL;
+    	char *line2 = NULL;
+    	char *line3 = NULL;
 
     while (1)
     {
         int printed = 0;
 
-        printf("1------------->line1: %s\n",line1);
+       // printf("1------------->line1: %s\n",line1);
 	line1 = get_next_line(fd1);
-        printf("2------------->line1: %s\n",line1);
+       // printf("2------------->line1: %s\n",line1);
        	if (line1)
         {
             printf("fd1 --> %s", line1);
@@ -98,13 +98,13 @@ int     main(void)
             printed = 1;
         }
 
-       /* line3 = get_next_line(fd3);
+        line3 = get_next_line(fd3);
         if (line3)
         {
             printf("fd3 --> %s", line3);
             free(line3);
             printed = 1;
-        }*/
+        }
 
         if (!printed)
             break;

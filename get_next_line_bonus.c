@@ -6,7 +6,7 @@
 /*   By: sgomez-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 00:18:45 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/17 04:20:18 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/19 01:57:11 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,12 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0 || ((bytes_read == 0) && stashes[fd]))
 		{
+			printf("---->fd: %d -- buffer: %s -- stash: %s\n",fd, buffer, stashes[fd]);
 			free(buffer);
-			free(stashes[fd]);
-			return (NULL);
+			if (stashes[fd])
+				free(stashes[fd]);
+			//printf("---->fd: %d -- buffer: %s -- stash: %s\n",fd, buffer, stashes[fd]);
+			return (stashes[fd] = NULL);
 		}
 		buffer[bytes_read] = '\0';
 		stashes[fd] = ft_gn_strjoin(stashes[fd], buffer);
