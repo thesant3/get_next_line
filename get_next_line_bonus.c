@@ -6,7 +6,7 @@
 /*   By: sgomez-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 00:18:45 by sgomez-m          #+#    #+#             */
-/*   Updated: 2025/07/19 01:57:11 by sgomez-m         ###   ########.fr       */
+/*   Updated: 2025/07/23 00:27:52 by sgomez-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	int			bytes_read;
 
-	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) < 0)
+	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
@@ -53,11 +53,9 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0 || ((bytes_read == 0) && stashes[fd]))
 		{
-			printf("---->fd: %d -- buffer: %s -- stash: %s\n",fd, buffer, stashes[fd]);
 			free(buffer);
 			if (stashes[fd])
 				free(stashes[fd]);
-			//printf("---->fd: %d -- buffer: %s -- stash: %s\n",fd, buffer, stashes[fd]);
 			return (stashes[fd] = NULL);
 		}
 		buffer[bytes_read] = '\0';

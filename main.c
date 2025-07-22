@@ -1,4 +1,4 @@
-/*#include <fcntl.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line.h"
 
@@ -8,7 +8,10 @@ int	main(void)
 	char *line;
 	int i = 0;
 
-	fd = open("test", O_RDONLY);
+	//fd = 42;
+	fd = open("test5", O_RDONLY);
+	fd = 42;
+
 	if(fd < 0)
 	{
 		perror("open");
@@ -27,13 +30,13 @@ int	main(void)
 	close(fd);
 
 	return	(0);
-}*/
-
+}
+/*
 #include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line_bonus.h"
 
-/*int main(void)
+int main(void)
 {
 	int fd1 = open("test", O_RDONLY);
 	int fd2 = open("test2", O_RDONLY);
@@ -53,7 +56,7 @@ int	main(void)
 }
 */
 
-
+/*
 #include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line.h"
@@ -62,7 +65,7 @@ int     main(void)
 {
         int fd1 = open("test", O_RDONLY);
        	int fd2 = open("test2", O_RDONLY);
-	int fd3 = open("test3", O_RDONLY);
+	int fd3 = open("test4", O_RDONLY);
 
         if(fd1 < 0 || fd2 < 0 || fd3 < 0)
         {
@@ -117,4 +120,4 @@ int     main(void)
 
         return  (0);
 }
-
+*/
