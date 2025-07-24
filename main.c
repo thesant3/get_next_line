@@ -1,4 +1,4 @@
-#include <fcntl.h>
+/*#include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line.h"
 
@@ -10,7 +10,7 @@ int	main(void)
 
 	//fd = 42;
 	fd = open("test5", O_RDONLY);
-	fd = 42;
+	//fd = 42;
 
 	if(fd < 0)
 	{
@@ -31,6 +31,7 @@ int	main(void)
 
 	return	(0);
 }
+*/
 /*
 #include <fcntl.h>
 #include <stdio.h>
@@ -56,7 +57,7 @@ int main(void)
 }
 */
 
-/*
+
 #include <fcntl.h>
 #include <stdio.h>
 #include "get_next_line.h"
@@ -120,4 +121,4 @@ int     main(void)
 
         return  (0);
 }
-*/
+
